@@ -1,0 +1,17 @@
+header {
+    justify-content: space-between;
+    display: flex;
+    margin: 0 15px;
+}
+main {
+    display: block;
+    
+    padding-left: 20%;
+    padding-right: 20%;
+    text-align: center;
+    margin-top: 60px;
+}
+main button {
+    background-color: purple;
+    color: white;
+}
