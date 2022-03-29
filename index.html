@@ -12,13 +12,34 @@
         <button class = "highscore-list">View HighScores</button>
         <div class="timer">Time: 90</div>
     </header>
-    <main>
+    <main class="startScreen">
         <h1>Coding Quiz Challenge</h1>
-        <p style="visibility:hidden">Try to answer the following code-related questions within the given time limit.  Keep
+        <p >Try to answer the following code-related questions within the given time limit.  Keep
             in mind that incorrect answers will penalize your time by 10 seconds.
         </p>
-        <button class="startQuiz">Start Quiz</button>
+        <button class="startBtn">Start Quiz</button>
     </main>
+    <section class="questions">
+        <h2 class="questionPrompt"></h2>
+        <ol>
+            <li>
+                <button class="answerOne"></button>
+            </li>
+            <li>
+                <button class="answerTwo"></button>
+            </li>
+            <li>
+                <button class="answerThree"></button>
+            </li>
+            <li>
+                <button class="answerFour"></button>
+            </li>
+        </ol>
+        <div class="isCorrect">
+            
+        </div>
+
+    </section>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
