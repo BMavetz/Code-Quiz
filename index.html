@@ -8,7 +8,7 @@
     <title>Code Quiz</title>
 </head>
 <body>
-    <header>
+    <header class="header">
         <button class = "highscore-list">View HighScores</button>
         <div class="timer">Time: 90</div>
     </header>
@@ -49,10 +49,14 @@
         </div>
     </section>
     <Section class = "highscore">
-        <ul>
+        <h2>Highscores</h2>
+        <ul class="scoreList">
 
         </ul>
-        
+        <div class = "highscoreBtn">
+            <button id="goBack">Go Back</button>
+            <button id="clrScore">Clear Highscores</button>
+        </div>
     </Section>
     <script src="./assets/js/script.js"></script>
 </body>

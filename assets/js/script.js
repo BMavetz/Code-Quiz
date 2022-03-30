@@ -1,3 +1,4 @@
+var header = document.querySelector(".header");
 var timerEl = document.querySelector(".timer");
 var startScrn = document.querySelector(".startScreen");
 var startBtn = document.querySelector(".startBtn");
@@ -12,6 +13,11 @@ var score = document.querySelector(".playerScore");
 var scorePg = document.querySelector(".scorePage");
 var initials = document.querySelector("#initials");
 var submitBtn = document.querySelector(".submitBtn");
+var highscorePage = document.querySelector(".highscore");
+var goBack = document.querySelector("#goBack");
+var clrScore = document.querySelector("#clrScore");
+var scoreList = document.querySelector(".scoreList");
+var viewHiScore = document.querySelector(".highscore-list")
 //create function so when game starts, question appears
     //use display = "none" and display = "block" to remove and insert sections
     //question contains 4 answer buttons
@@ -27,8 +33,13 @@ var allAns = ["boolean", "string", "alerts", "numbers","quotes", "curly brackets
 var quesIndex;
 var ansIndex;
 var playerScr;
+function resetPage(){
 questions.style.display = "none";
 scorePg.style.display = "none";
+highscorePage.style.display = "none";
+startScrn.style.display = "block";
+header.style.display = "flex";
+}
 startBtn.addEventListener("click", function(){
     startGame();
 });
@@ -186,7 +197,7 @@ function finalScore(){
 
 submitBtn.addEventListener("click",function(){
     addEntry();
-    
+    viewHighscore();
 })
 
 
@@ -208,6 +219,38 @@ function addEntry(){
 
 }
 
+var storeScore;
+function viewHighscore(){
+    scorePg.style.display = "none";
+    header.style.display = "none";
+    highscorePage.style.display = "block";
+    storeScore = JSON.parse(localStorage.getItem("existingScore"));
+    for (var i = 0; i < storeScore.length; i++) {
+        var stScore = storeScore[i].initials + storeScore[i].score;
+    
+        var li = document.createElement("li");
+        li.textContent = stScore;
+        scoreList.appendChild(li);
+      }
+
+}
+clrScore.addEventListener("click",function(){
+    existingScore = [];
+    localStorage.setItem("existingScore", JSON.stringify(existingScore));
+    addEntry();
+
+
+})
+goBack.addEventListener("click",function(){
+    resetPage();
+})
+viewHiScore.addEventListener("click",function(){
+    questions.style.display = "none";
+    scorePg.style.display = "none";
+    highscorePage.style.display = "block";
+    startScrn.style.display = "none";
+    header.style.display = "none";
+})
 function startTimer() {
     // Sets timer
     timer = setInterval(function() {
@@ -223,4 +266,5 @@ function startTimer() {
       }
     }, 1000);
   }
+  resetPage();
   
