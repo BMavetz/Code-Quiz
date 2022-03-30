@@ -3,10 +3,11 @@ var startScrn = document.querySelector(".startScreen");
 var startBtn = document.querySelector(".startBtn");
 var questions = document.querySelector(".questions");
 var quesPrompt = document.querySelector(".questionPrompt");
-var ansOne = document.querySelector(".answerOne");
-var ansTwo = document.querySelector(".answerTwo");
-var ansThree = document.querySelector(".answerThree");
-var ansFour = document.querySelector(".answerFour");
+var ansA = document.querySelector(".answerA");
+var ansB = document.querySelector(".answerB");
+var ansC = document.querySelector(".answerC");
+var ansD = document.querySelector(".answerD");
+var isCorrect = document.querySelector(".isCorrect");
 //create function so when game starts, question appears
     //use display = "none" and display = "block" to remove and insert sections
     //question contains 4 answer buttons
@@ -15,13 +16,17 @@ var ansFour = document.querySelector(".answerFour");
 //after all questions, or if timer runs out, screen comes up with a score
 var timer;
 var timerCount;
-var allQuest = ["Commonly used data types DO NOT include:", "How old are you?", "what year is it?"];
-var allAns = ["boolean", "string", "alerts", "numbers" ]
+var allQuest = ["Commonly used data types DO NOT include:", "The condition within an if/else statement is enclosed within ________.", 
+"A very useful tool used during development and debugging for printing content to the debugger is:","A ____ blank file is used to format the contents and style of the elements on a webpage, defining characteristics such as color, size, font, and more"];
+var allAns = ["boolean", "string", "alerts", "numbers","quotes", "curly brackets", "parentheses", "square brackets",
+"JavaScript", "terminal/bash", "for loops", "console.log","CSS","HTML","Javascript","jQuery"];
 var quesIndex;
 var ansIndex;
 questions.style.display = "none";
-startBtn.addEventListener("click", startGame);
-console.log(ansOne.attributes);
+startBtn.addEventListener("click", function(){
+    startGame();
+});
+
 
 function startGame() {
     startScrn.style.display = "none";    
@@ -29,46 +34,150 @@ function startGame() {
     timerCount = 50;
     quesIndex = 0;
     ansIndex = 0;
+    isCorrect.textContent = "";
     startTimer()
-    fillQuestion();
+    fillQuesAns(0);  
 }
 
-function fillQuestion(){
-    if(quesIndex === 0){
-        quesPrompt.textContent = allQuest[quesIndex];
-        fillAnswer();
-        
-    }else if(quesIndex === 1){
-
-    }else if(quesIndex === 2){
-
-    }else if(quesIndex === 3){
-
-    }
-}
-
-function fillAnswer(){
+function fillQuesAns(number){
+    quesIndex = quesIndex + number;
+    if(quesIndex >= allQuest.length){
+        finalScore();
+    }else{
+    console.log(quesIndex);
+    quesPrompt.textContent = allQuest[quesIndex];
     if(quesIndex === 0){
         ansIndex = 0;
     }else{
         ansIndex = quesIndex*4;
     }
-    ansOne.textContent = allAns[ansIndex];
+    ansA.textContent = allAns[ansIndex];
     ansIndex ++;
-    ansTwo.textContent = allAns[ansIndex];
+    ansB.textContent = allAns[ansIndex];
     ansIndex ++;
-    ansThree.textContent = allAns[ansIndex];
+    ansC.textContent = allAns[ansIndex];
     ansIndex ++; 
-    ansFour.textContent = allAns[ansIndex];
+    ansD.textContent = allAns[ansIndex];
+    }
 }
-
+ansA.addEventListener("click",function(){
+    if(quesIndex === 0){
+        isCorrect.textContent = "Wrong!";
+        timerCount -=10;
+        fillQuesAns(1);
+    }  
+    else if(quesIndex === 1){
+        isCorrect.textContent = "Wrong!";
+        timerCount -=10;
+        fillQuesAns(1);
+        
+    } 
+    else if(quesIndex === 2){
+        isCorrect.textContent = "Wrong!";
+        timerCount -=10;
+        fillQuesAns(1);
+        
+    }else if(quesIndex === 3){
+        isCorrect.textContent = "Correct!";
+        fillQuesAns(1);
+    }
+})
+ansB.addEventListener("click",function(){
+    if(quesIndex === 0){
+        isCorrect.textContent = "Wrong!";
+        timerCount -=10;
+        fillQuesAns(1);
+    }  
+    else if(quesIndex === 1){
+        isCorrect.textContent = "Wrong!";
+        timerCount -=10;
+        fillQuesAns(1);
+    } 
+    else if(quesIndex === 2){
+        isCorrect.textContent = "Wrong!";
+        timerCount -=10;
+        fillQuesAns(1);
+        
+    }else if(quesIndex === 3){
+        isCorrect.textContent = "Wrong!";
+        timerCount -=10;
+        fillQuesAns(1);
+        
+    }
+})
+ansC.addEventListener("click",function(){
+    if(quesIndex === 0){
+        isCorrect.textContent = "Correct!";
+        fillQuesAns(1);
+    }  
+    else if(quesIndex === 1){
+        isCorrect.textContent = "Correct!";
+        fillQuesAns(1);
+    } 
+    else if(quesIndex === 2){
+        isCorrect.textContent = "Wrong!";
+        timerCount -=10;
+        fillQuesAns(1);
+        
+    }else if(quesIndex === 3){
+        isCorrect.textContent = "Wrong!";
+        timerCount -=10;
+        fillQuesAns(1);
+        
+    }
+})
+ansD.addEventListener("click",function(){
+    if(quesIndex === 0){
+        isCorrect.textContent = "Wrong!";
+        timerCount -=10;
+        fillQuesAns(1);
+    }  
+    else if(quesIndex === 1){
+        isCorrect.textContent = "Wrong!";
+        timerCount -=10;
+        fillQuesAns(1);
+    } 
+    else if(quesIndex === 2){
+        isCorrect.textContent = "Correct!";
+        fillQuesAns(1);
+    }else if(quesIndex === 3){
+        isCorrect.textContent = "Wrong!";
+        timerCount -=10;
+        fillQuesAns(1);
+        
+    }
+})
+//         ansTwo.addEventListener("click",function(){
+            
+//         })
+//         ansThree.addEventListener("click",function(){
+//             isCorrect.textContent = "Correct!";
+//             quesIndex ++;
+//         })
+//         ansFour.addEventListener("click",function(){
+            
+//         })
+//     }
+//     // console.log(quesNum);
+//     // console.log(quesIndex);
+//     // fillQuestion();
+//     nextQues();
+// return;
+// function wrongAns(){
+//     isCorrect.textContent = "Wrong!";
+//     quesIndex ++;
+//     // console.log(quesIndex);
+//     timerCount-=10;
+//     nextQues();
+//     return;
+// }
 function startTimer() {
     // Sets timer
     timer = setInterval(function() {
       timerCount--;
       timerEl.textContent = "Time: " + timerCount;
     // Tests if time has run out
-      if (timerCount === 0) {
+      if (timerCount <= 0) {
         // Clears interval
         startScrn.style.display = "block";
         questions.style.display = "none";

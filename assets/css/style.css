@@ -19,6 +19,14 @@ main {
     text-align: left;
     margin-top: 60px;
 }
+
+.scorePage {
+    display: block;
+    padding-left: 20%;
+    padding-right: 20%;
+    text-align: left;
+    margin-top: 60px;
+}
 }
 main button {
     background-color: purple;
