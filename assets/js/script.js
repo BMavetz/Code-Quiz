@@ -204,6 +204,9 @@ submitBtn.addEventListener("click",function(){
 var newScore;
 var existingScore;
 function addEntry(){
+    if(playerScr < 0){
+        playerScr = 0;
+    }
     existingScore = JSON.parse(localStorage.getItem("existingScore"));
     if(existingScore == null) {
         existingScore = [];
@@ -221,12 +224,13 @@ function addEntry(){
 
 var storeScore;
 function viewHighscore(){
+    scoreList.innerHTML = "";
     scorePg.style.display = "none";
     header.style.display = "none";
     highscorePage.style.display = "block";
     storeScore = JSON.parse(localStorage.getItem("existingScore"));
     for (var i = 0; i < storeScore.length; i++) {
-        var stScore = storeScore[i].initials + storeScore[i].score;
+        var stScore = storeScore[i].initials +" " + storeScore[i].score;
     
         var li = document.createElement("li");
         li.textContent = stScore;
@@ -237,7 +241,7 @@ function viewHighscore(){
 clrScore.addEventListener("click",function(){
     existingScore = [];
     localStorage.setItem("existingScore", JSON.stringify(existingScore));
-    addEntry();
+    scoreList.innerHTML = "";
 
 
 })
@@ -245,6 +249,7 @@ goBack.addEventListener("click",function(){
     resetPage();
 })
 viewHiScore.addEventListener("click",function(){
+    viewHighscore();
     questions.style.display = "none";
     scorePg.style.display = "none";
     highscorePage.style.display = "block";
